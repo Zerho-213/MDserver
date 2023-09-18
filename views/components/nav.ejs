@@ -1,0 +1,79 @@
+<div class="nav">
+    <h3 class="">MDserver</h3>
+    <div id="infos">
+      <img id="avatar" src="https://i.pravatar.cc/300" alt="" srcset="">
+      <p>Kurua Likos</p>
+      <div id="social">
+        <div class="socialIcone">
+          <a href="http://facebook.com">
+            <i class="ri-twitter-fill"></i>
+          </a>
+        </div>
+        <div class="socialIcone">
+          <a href="http://facebook.com">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+        </div>
+        <div class="socialIcone">
+          <a href="http://facebook.com">
+            <i class="ri-instagram-fill"></i>
+          </a>
+        </div>
+        
+
+          
+      </div>
+      
+    </div>
+
+    <div id="menu">
+      <aside>
+        <nav>
+          <a href="/">home </a>
+          <% const nav = content.nav %>
+          <% let directories = {}; %>
+          <% nav.forEach(function(item) { %>
+            <% let folders = item.split('/');%>
+            <% let label = folders[folders.length - 1];%>
+            <% if (folders.length > 1) { %>
+              <% let parentFolder = folders.slice(0, -1).join('/');%>
+              <% if (!directories[parentFolder]) { %>
+                <% directories[parentFolder] = []; %>
+              <% } %>
+              <% directories[parentFolder].push(item); %>
+            <% } else { %>
+              <li>
+                <a href="/<%= item %>">
+                  <%= label %>
+                </a>
+              </li>
+            <% } %>
+          <% }); %>
+          <% for (let directory in directories) { %>
+            <% let subRoutes = directories[directory]; %>
+            <div class="dropdown ">
+              <label class="btn-drop" hx-preserve>
+                <%= directory %>
+              </label>
+              <ul class="dropdown-content closed">
+                <% subRoutes.forEach(function(subRoute) { console.log(subRoute) %>
+                  <% let subFolders = subRoute.split('/'); %>
+                  <% let subLabel = subFolders[subFolders.length - 1]; %>
+                  <li>
+                    <a href="/<%= subRoute %>">
+                      <%= subLabel %>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+          <% } %>
+          </nav>
+      </aside>          
+    </div>
+  </div>
+
+
+
+
+
