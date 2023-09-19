@@ -3,14 +3,14 @@ let dropdown = document.querySelectorAll('.btn-drop')
 let links = document.querySelectorAll('li a')
 
 dropdown.forEach(drops => {
-    drops.addEventListener('click', function() {
-        let content = drops.nextElementSibling
-        if (!content.classList.contains('closed')) {
-            content.classList.add('closed')
-        } else {
-            content.classList.remove('closed')
-        }
-    })
+  drops.addEventListener('click', function() {
+    let content = drops.nextElementSibling
+    if (!content.classList.contains('closed')) {
+      content.classList.add('closed')
+    } else {
+      content.classList.remove('closed')
+    }
+  })
 })
 
 for (let i = 0; i < links.length; i++) {
@@ -18,14 +18,14 @@ for (let i = 0; i < links.length; i++) {
     links[i].parentNode.parentNode.classList.remove('closed')
     console.log(links[i].parentNode.parentNode)
   }
-  
+
 }
 
 // Title Script
 
 let url = window.location.href
 let segments = url.split("/")
-let title = segments[segments.length-1]
+let title = segments[segments.length - 1]
 document.querySelector("#title p").innerHTML = title
 
 
@@ -50,6 +50,12 @@ btnSettings.addEventListener('click', () => {
 const themeSelect = document.querySelector('#theme-select')
 themeSelect.selectedIndex = themeSelect.value
 themeSelect.value = savedTheme
+
+console.log("savedTheme is null ?", savedTheme)
+
+if (savedTheme == null) {
+  html.classList.replace(html.className, "Black")
+}
 
 themeSelect.addEventListener('change', () => {
   html.classList.replace(html.className, themeSelect.value)

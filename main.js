@@ -30,19 +30,12 @@ pages.forEach((page) => {
 
 pages.forEach(() => {
   app.get(`/`, (req, res) => {
-    const nav = pages.map(menu => menu.replace('pages/', '').replace('.md', ''))
-    let content = { nav }
-    console.log(content)
-    res.render('home', { content: content });
+    res.redirect('/home')
   });
 });
 
 
 
-
-app.get(`/tests`, (req, res) => {
-  res.render('tests', {});
-});
 
 // Handle 404 - Keep this as a last route
 app.use(function(req, res, next) {
